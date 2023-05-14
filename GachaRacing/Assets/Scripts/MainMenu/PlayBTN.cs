@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class PlayBTN : MonoBehaviour
 {
     public PickSetting pickSetting;
+    public totalCount totalcount;
+    public GameData gameData;
     public bool isError = false;
     void Start()
     {
@@ -32,6 +34,8 @@ public class PlayBTN : MonoBehaviour
         }
         else
         {
+            gameData.totalPeople = totalcount.count;
+            gameData.pickPeople = pickSetting.pick;
             SceneManager.LoadScene("PlayRacing");
         }
     }

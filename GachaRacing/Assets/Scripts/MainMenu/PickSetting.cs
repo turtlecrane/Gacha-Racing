@@ -7,18 +7,14 @@ public class PickSetting : MonoBehaviour
 {
     public TextMeshProUGUI WarningMessage;
     public GameObject Warning;
-    public CountPeople countPeople;
-    public CountPeople countPick;
+    public totalCount totalcount;
+    public CountPick countPick;
     public int people = 0;
     public int pick = 0;
-    void Start()
-    {
-        
-    }
-
+   
     void Update()
     {
-        people = countPeople.count;
+        people = totalcount.count;
         pick = countPick.count;
         
         if (pick > people)
