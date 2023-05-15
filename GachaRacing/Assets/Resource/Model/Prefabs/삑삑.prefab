@@ -426,9 +426,10 @@ GameObject:
   - component: {fileID: 3203487116660522611}
   - component: {fileID: 8232772015727589368}
   - component: {fileID: 8232772015727589369}
+  - component: {fileID: 2038936117}
   m_Layer: 0
-  m_Name: bbick
-  m_TagString: Untagged
+  m_Name: "\uC091\uC091"
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,6 +534,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4646452, y: 0.68458074, z: 0.49180585}
   m_Center: {x: -0.0025125667, y: 0.3362904, z: 0.0000003874302}
+--- !u!114 &2038936117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203487116660522615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d81287f7775f4ebc29fff5c09e5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  haveUltimate: 0
+  isBasicTime: 0
+  isUltiTime: 0
 --- !u!1 &3203487117069517382
 GameObject:
   m_ObjectHideFlags: 0

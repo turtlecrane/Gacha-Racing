@@ -674,9 +674,10 @@ GameObject:
   - component: {fileID: 7540139644947274103}
   - component: {fileID: 1698262418489676475}
   - component: {fileID: 1698262418489676474}
+  - component: {fileID: 712876712}
   m_Layer: 0
-  m_Name: boool
-  m_TagString: Untagged
+  m_Name: "\uBCFC"
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -781,6 +782,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.47718793, y: 0.51012516, z: 0.94255805}
   m_Center: {x: 0.0012562871, y: 0.2505083, z: -0.03905064}
+--- !u!114 &712876712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991410382793566672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d81287f7775f4ebc29fff5c09e5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  haveUltimate: 0
+  isBasicTime: 0
+  isUltiTime: 0
 --- !u!1 &7973849540890490289
 GameObject:
   m_ObjectHideFlags: 0

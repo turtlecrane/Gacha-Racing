@@ -922,9 +922,10 @@ GameObject:
   - component: {fileID: 6849033648722803933}
   - component: {fileID: 3490792822140645042}
   - component: {fileID: 3490792822140645043}
+  - component: {fileID: 231522217}
   m_Layer: 0
-  m_Name: horullus
-  m_TagString: Untagged
+  m_Name: "\uD640\uB8F0\uB85C\uC2A4\uC131\uC778"
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1029,6 +1030,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.72203255, z: 0.72229743}
   m_Center: {x: 9.720444e-17, y: 0.413404, z: 0.06934014}
+--- !u!114 &231522217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362701387944961887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d81287f7775f4ebc29fff5c09e5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  haveUltimate: 0
+  isBasicTime: 0
+  isUltiTime: 0
 --- !u!1 &6405641076601824902
 GameObject:
   m_ObjectHideFlags: 0

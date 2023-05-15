@@ -44,7 +44,7 @@ public class Spawn : MonoBehaviour
             if (boolVariables[i])
             {
                 gameDataScript.selectedCharacters.Add(boolVariables[i].ToString());
-                Debug.Log("Index of true element: " + i);
+                //Debug.Log("Index of true element: " + i);
                 //최대 4.8 이상으로 넘어가면 안댐~~
                 if (totalPeople == 1)
                 {

@@ -596,9 +596,10 @@ GameObject:
   - component: {fileID: 2451240948308827391}
   - component: {fileID: 1250352391987809376}
   - component: {fileID: 1250352391987809379}
+  - component: {fileID: 1500273573}
   m_Layer: 0
-  m_Name: snicki
-  m_TagString: Untagged
+  m_Name: "\uC2A4\uB2C8\uD0A4"
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -703,6 +704,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2562865, y: 0.7785392, z: 1.2075975}
   m_Center: {x: 0.0012484714, y: 0.38833404, z: 0.0037987232}
+--- !u!114 &1500273573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044699954470692556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d81287f7775f4ebc29fff5c09e5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  haveUltimate: 0
+  isBasicTime: 0
+  isUltiTime: 0
 --- !u!1 &6242093957219404330
 GameObject:
   m_ObjectHideFlags: 0
