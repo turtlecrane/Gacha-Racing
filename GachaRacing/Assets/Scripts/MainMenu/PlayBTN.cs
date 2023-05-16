@@ -34,6 +34,7 @@ public class PlayBTN : MonoBehaviour
         }
         else
         {
+            gameData.ResetTime();
             gameData.totalPeople = totalcount.count;
             gameData.pickPeople = pickSetting.pick;
             SceneManager.LoadScene("PlayRacing");

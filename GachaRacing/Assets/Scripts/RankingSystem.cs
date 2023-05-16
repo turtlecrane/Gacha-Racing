@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class RankingSystem : MonoBehaviour
 {
-    //public List<Transform> playerObjects;  // Player 오브젝트들의 Transform 리스트
     public PlayerStatus[] players;
     public TextMeshProUGUI ranking;
     private string _1st;
@@ -17,21 +17,23 @@ public class RankingSystem : MonoBehaviour
     public bool isUlti = false;
     public bool UltimateTime;
     public float UltiTime;
-
+    private GameData gameDataScript;
+    
     private void Start()
     {
+        gameDataScript = GameObject.Find("GameData").GetComponent<GameData>();
         UltiTime = 0f;
     }
 
     void Update()
     {
         // 경과 시간 업데이트
-        float currentTime = Time.time;
+        float currentTime = gameDataScript.RacingTime;
         if (currentTime >= 20f)
         {
             racingStart = true;
         }
-
+        
         players = FindObjectsOfType<PlayerStatus>();
         
         // players 배열을 오브젝트의 Z 위치에 따라 정렬

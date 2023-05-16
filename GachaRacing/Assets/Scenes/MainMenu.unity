@@ -2157,6 +2157,8 @@ MonoBehaviour:
   bbick: 0
   horullus: 0
   snicki: 0
+  selectedCharacters: []
+  RacingTime: 0
 --- !u!4 &1123699643
 Transform:
   m_ObjectHideFlags: 0
@@ -4409,18 +4411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf3fa86f8daae7408fd70d169be1ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelect: 0
-  selectImg: {fileID: 0}
-  normalColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  selectedColor:
-    r: 1
-    g: 0.92156863
-    b: 0.015686275
-    a: 1
 --- !u!1 &2012326335
 GameObject:
   m_ObjectHideFlags: 0

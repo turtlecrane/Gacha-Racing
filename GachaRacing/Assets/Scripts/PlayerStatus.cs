@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public float currentTime;
     public float moveSpeed;
     public bool haveUltimate;
     private Rigidbody rb; 
@@ -13,8 +15,12 @@ public class PlayerStatus : MonoBehaviour
     public bool isUltiTime;
     public float UltiTime;
     public GameObject UltiEffect;
+    
+    private GameData gameDataScript;
+    
     private void Start()
     {
+        gameDataScript = GameObject.Find("GameData").GetComponent<GameData>();
         isUltiTime = false;
         UltiTime = 0f;
         Debug.Log("현재 속도 변경 간격 : " + changeSpeedInterval + " 초");
@@ -26,8 +32,8 @@ public class PlayerStatus : MonoBehaviour
     void Update()
     {
         // 경과 시간 업데이트
-        float currentTime = Time.time;
-        
+        currentTime = gameDataScript.RacingTime;
+    
         if (!isUltiTime)
         {
             // 일정 간격으로 속도 변경
@@ -42,7 +48,7 @@ public class PlayerStatus : MonoBehaviour
             Debug.Log(gameObject.name+" !! 궁극기 발동중~~");
             UltiEffect.SetActive(true);
             moveSpeed = 14f;
-            if (UltiTime > 8f)
+            if (UltiTime > 6f)
             {
                 isUltiTime = false;
                 UltiTime = 0f;
@@ -53,8 +59,6 @@ public class PlayerStatus : MonoBehaviour
                 UltiTime += Time.deltaTime;
             }
         }
-        
-
         // 19초가 경과한 경우 출발!
         if (currentTime >= 19f)
         {

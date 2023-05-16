@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
@@ -15,4 +17,21 @@ public class GameData : MonoBehaviour
     public bool horullus;
     public bool snicki;
     public List<string> selectedCharacters;
+    
+    public float RacingTime;
+
+    private void Update()
+    {
+        RacingTime += Time.deltaTime;
+    }
+    
+    public float GetTime()
+    {
+        return RacingTime;
+    }
+
+    public void ResetTime()
+    {
+        RacingTime = 0f;
+    }
 }
