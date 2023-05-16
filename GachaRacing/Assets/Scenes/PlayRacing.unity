@@ -7674,6 +7674,8 @@ MonoBehaviour:
   ranking: {fileID: 1704449353}
   racingStart: 0
   isUlti: 0
+  UltimateTime: 0
+  UltiTime: 0
 --- !u!4 &540779290
 Transform:
   m_ObjectHideFlags: 0
@@ -8127,15 +8129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9a037ddb4d4da458ef3a8085984cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalPeople: 6
+  totalPeople: 3
   pickPeople: 1
-  rilla: 1
+  rilla: 0
   tung: 0
   sakana: 1
-  boool: 1
-  hunter: 1
-  bbick: 0
-  horullus: 1
+  boool: 0
+  hunter: 0
+  bbick: 1
+  horullus: 0
   snicki: 1
   selectedCharacters: []
 --- !u!4 &590685862
@@ -13427,7 +13429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983129108}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 260.2, y: 7.687, z: 36.7}
+  m_LocalPosition: {x: 260.2, y: 7.687, z: 308.3}
   m_LocalScale: {x: 0.01, y: 0.25, z: 11.57}
   m_ConstrainProportionsScale: 0
   m_Children: []

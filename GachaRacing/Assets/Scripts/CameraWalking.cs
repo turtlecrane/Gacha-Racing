@@ -24,13 +24,29 @@ public class CameraWalking : MonoBehaviour
             Vector3 secondPlayerPosition = rankingSystem.GetSecondPlayerPosition();
             Vector3 thirdPlayerPosition = rankingSystem.GetThirdPlayerPosition();
             Vector3 UltiPlayerPosition = rankingSystem.GetUltimatePosition();
-            transform.rotation = Quaternion.Euler(25f, 180f, 0f); // 카메라를 90도 회전시킴
-            
-            if (timer >= interval)
+            transform.rotation = Quaternion.Euler(25f, 180f, 0f); // 카메라를 180도 회전시킴
+
+            if (rankingSystem.players.Length == 1)
             {
-                randomNumber = Random.Range(1, 4);
-                timer = 0f;
+                randomNumber = 1;
             }
+            else if (rankingSystem.players.Length == 2)
+            {
+                if (timer >= interval)
+                {
+                    randomNumber = Random.Range(1, 3);
+                    timer = 0f;
+                }
+            }
+            else if (rankingSystem.players.Length >= 3)
+            {
+                if (timer >= interval)
+                {
+                    randomNumber = Random.Range(1, 4);
+                    timer = 0f;
+                }
+            }
+            
 
             if (randomNumber == 1)
             {

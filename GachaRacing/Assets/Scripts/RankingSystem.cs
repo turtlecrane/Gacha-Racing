@@ -56,18 +56,28 @@ public class RankingSystem : MonoBehaviour
                 _3rd = playerName;
             }
 
-            ranking.text = "1등 : " + _1st + " !\n2등 : " + _2nd + " !\n3등 : " + _3rd + " !";
-
+            if (players.Length == 1)
+            {
+                ranking.text = "1등 : " + _1st + " !";
+            }
+            else if (players.Length == 2)
+            {
+                ranking.text = "1등 : " + _1st + " !\n2등 : " + _2nd + " !";
+            }
+            else if (players.Length >= 3)
+            {
+                ranking.text = "1등 : " + _1st + " !\n2등 : " + _2nd + " !\n3등 : " + _3rd + " !";
+            }
+            
             if (players[i].isUltiTime)
             {
                 UltiTime += Time.deltaTime;
                 //궁극기 발동중인 스크립트 찾아짐
-                //Debug.Log(players[i].gameObject.name + "궁극기 발동중");
                 UltimateTime = true;
-                if (UltiTime >= 10f)
+                if (UltiTime >= 7.5f && UltimateTime)
                 {
                     UltimateTime = false;
-                    UltiTime = 0f;
+                    //UltiTime = 0f;
                 }
             }
         }

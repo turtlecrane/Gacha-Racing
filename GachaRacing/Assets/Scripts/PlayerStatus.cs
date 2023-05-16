@@ -12,6 +12,7 @@ public class PlayerStatus : MonoBehaviour
     
     public bool isUltiTime;
     public float UltiTime;
+    public GameObject UltiEffect;
     private void Start()
     {
         isUltiTime = false;
@@ -32,18 +33,20 @@ public class PlayerStatus : MonoBehaviour
             // 일정 간격으로 속도 변경
             if (currentTime >= nextSpeedChangeTime)
             {
-                moveSpeed = Random.Range(7f, 9f);
+                moveSpeed = Random.Range(8f, 10f);
                 nextSpeedChangeTime = currentTime + changeSpeedInterval;
             }
         }
         else//필살기 발동시
         {
-            //Debug.Log(gameObject.name+" !! 궁극기 발동중~~");
-            moveSpeed = 13f;
-            if (UltiTime > 10f)
+            Debug.Log(gameObject.name+" !! 궁극기 발동중~~");
+            UltiEffect.SetActive(true);
+            moveSpeed = 14f;
+            if (UltiTime > 8f)
             {
                 isUltiTime = false;
                 UltiTime = 0f;
+                UltiEffect.SetActive(false);
             }
             else
             {
