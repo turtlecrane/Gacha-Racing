@@ -9,16 +9,39 @@ using Random = UnityEngine.Random;
 public class RankingSystem : MonoBehaviour
 {
     public PlayerStatus[] players;
+    
     public TextMeshProUGUI ranking;
     private string _1st;
     private string _2nd;
     private string _3rd;
     public bool racingStart;
+
+    public GameObject UltiEventComent;
+    private bool UltiFlag;
     public bool isUlti = false;
     public bool UltimateTime;
     public float UltiTime;
     private GameData gameDataScript;
     
+    public GameObject FastEventComent;
+    private bool FastFlag = false;
+    public bool FastEventTime;
+    private float FastTime;
+
+    public GameObject ObstacleEventComent;
+    public bool ObstacleCollision;
+    public float ObstacleTime;
+    public bool ObstacleCameraTime;
+    private bool ObstacleFlag = false;
+    
+    public bool EndLineCollision;
+
+    public int FinishCount;
+    public bool GameFinish;
+    public bool OpenResult = false;
+    public GameObject Result;
+    public PlayerStatus[] topPlayers;//최종 우승자들이 저장될 예정
+
     private void Start()
     {
         gameDataScript = GameObject.Find("GameData").GetComponent<GameData>();
@@ -27,6 +50,7 @@ public class RankingSystem : MonoBehaviour
 
     void Update()
     {
+        FinishCount = 0;
         // 경과 시간 업데이트
         float currentTime = gameDataScript.RacingTime;
         if (currentTime >= 20f)
@@ -76,11 +100,61 @@ public class RankingSystem : MonoBehaviour
                 UltiTime += Time.deltaTime;
                 //궁극기 발동중인 스크립트 찾아짐
                 UltimateTime = true;
-                if (UltiTime >= 7.5f && UltimateTime)
+                if (!UltiFlag)
                 {
-                    UltimateTime = false;
+                    GameObjSetActive(UltiEventComent);
+                    StartCoroutine(DelayedFunction(2.5f, UltiEventComent));//2초뒤에 이벤트효과 꺼짐
+                    UltiFlag = true;
+                }
+                if (UltiTime >= 6.0f && UltimateTime)//궁극기 시간이 끝나면
+                {
+                    UltimateTime = false;//궁극기가 끝났다고 알림
                     //UltiTime = 0f;
                 }
+            }
+            if (players[i].isFastTime)
+            {
+                FastTime += Time.deltaTime;
+                FastEventTime = true;
+                //Debug.Log("순풍 이벤트 발동!!!!!");
+                if (!FastFlag)
+                {
+                    GameObjSetActive(FastEventComent);
+                    StartCoroutine(DelayedFunction(2.5f, FastEventComent));//2초뒤에 이벤트효과 꺼짐
+                    FastFlag = true;
+                }
+                if (FastTime >= 10f)//카메라 시점 지속시간
+                {
+                    FastEventTime = false;
+                }
+            }
+            if (players[i].isObstacleLine)
+            {
+                ObstacleTime += Time.deltaTime;
+                ObstacleCameraTime = true;
+                ObstacleCollision = true;
+                if (!ObstacleFlag)
+                {
+                    GameObjSetActive(ObstacleEventComent);
+                    StartCoroutine(DelayedFunction(2.5f, ObstacleEventComent));//2초뒤에 이벤트효과 꺼짐
+                    ObstacleFlag = true;
+                }
+                else 
+                {
+                    ObstacleCollision = false;
+                }
+                if (ObstacleTime >= 12f)//카메라 시점 지속시간
+                {
+                    ObstacleCameraTime = false;
+                }
+            }
+            if (players[i].isEndLine)
+            {
+                EndLineCollision = true;//결승전에 거의 다 왔으면 카메라 위치를 바꾸기 위한 플래그
+            }
+            if (players[i].isFinished)//결승점에 몇명이 들어왔는지 체킹
+            {
+                FinishCount++; 
             }
         }
 
@@ -97,8 +171,24 @@ public class RankingSystem : MonoBehaviour
             }
             isUlti = true;
         }
+
+        if (FinishCount >= 1)
+        {
+            GameFinish = true;
+        }
+        if (FinishCount == gameDataScript.pickPeople)
+        {
+            OpenResult = true;
+            //Time.timeScale = 0f;//화면 정지
+            //Result.SetActive(true);
+            topPlayers = new PlayerStatus[gameDataScript.pickPeople];
+            for (int i = 0; i < gameDataScript.pickPeople; i++)
+            {
+                topPlayers[i] = players[i];
+            }
+        }
     }
-    
+
     public Vector3 GetFirstPlayerPosition()
     {
         if (players.Length > 0)
@@ -136,10 +226,25 @@ public class RankingSystem : MonoBehaviour
             if (players[i].isUltiTime)
             {
                 //궁극기 발동중인 스크립트 찾아짐
-                Debug.Log(players[i].gameObject.name + "궁극기 발동중");
+                //Debug.Log(players[i].gameObject.name + "궁극기 발동중");
                 return players[i].transform.position;
             }
         }
         return Vector3.zero;
     }
+    
+    public void GameObjSetActive(GameObject obj)
+    {
+        obj.SetActive(true);
+    }
+    IEnumerator DelayedFunction(float delay, GameObject obj)
+    {
+        yield return new WaitForSeconds(delay);
+        GameObjFalseActive(obj);
+    }
+    public void GameObjFalseActive(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+    
 }

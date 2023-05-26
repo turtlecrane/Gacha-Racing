@@ -1,17 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CameraWalking : MonoBehaviour
 {
     public RankingSystem rankingSystem;
     public Animator cameraAnimator;
+    public GameObject FastEventCamera;
+    public GameObject EndLineCamera;
+    public GameObject ObstacleCamera;
+    public GameObject FinishCamera;
     
     private float timer = 0f;
     private float interval = 5f;
 
     public int randomNumber;
-    
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -60,10 +66,36 @@ public class CameraWalking : MonoBehaviour
             {
                 transform.position = new Vector3(thirdPlayerPosition.x, thirdPlayerPosition.y + 1.5f, thirdPlayerPosition.z + 3f);
             }
+            //랜덤넘버에 상관없이 필살기 발동중일때는 필살기 발동중인 플레이어를 추적한다
             if ((randomNumber == 1 || randomNumber == 2 || randomNumber == 3) && rankingSystem.UltimateTime)
             {
                 transform.position = new Vector3(UltiPlayerPosition.x, UltiPlayerPosition.y + 1.5f, UltiPlayerPosition.z + 3f);
             }
+            if ((randomNumber == 1 || randomNumber == 2 || randomNumber == 3) && rankingSystem.FastEventTime)
+            {
+                transform.position = FastEventCamera.transform.position;
+                transform.rotation = FastEventCamera.transform.rotation;
+            }
+            if ((randomNumber == 1 || randomNumber == 2 || randomNumber == 3) && rankingSystem.EndLineCollision)
+            {
+                transform.position = EndLineCamera.transform.position;
+                transform.rotation = EndLineCamera.transform.rotation;
+                if (rankingSystem.GameFinish)
+                {
+                    transform.position = FinishCamera.transform.position;
+                    transform.rotation = FinishCamera.transform.rotation;
+                }
+            }
+            if ((randomNumber == 1 || randomNumber == 2 || randomNumber == 3) && rankingSystem.ObstacleCameraTime)
+            {
+                transform.position = ObstacleCamera.transform.position;
+                transform.rotation = ObstacleCamera.transform.rotation;
+            }
+            //if ((randomNumber == 1 || randomNumber == 2 || randomNumber == 3) && rankingSystem.GameFinish)
+            //{
+            //    transform.position = FinishCamera.transform.position;
+            //    transform.rotation = FinishCamera.transform.rotation;
+            //}
 
             
         }
