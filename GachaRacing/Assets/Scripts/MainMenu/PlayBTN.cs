@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +9,7 @@ public class PlayBTN : MonoBehaviour
     public bool isError = false;
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -29,6 +26,12 @@ public class PlayBTN : MonoBehaviour
         if (pickSetting.pick == 0)
         {
             pickSetting.WarningMessage.text = "반드시 1명 이상을 뽑아야해요.";
+            pickSetting.Active();
+            isError = true;
+        }
+        else if (pickSetting.pick == 1)
+        {
+            pickSetting.WarningMessage.text = "1명만 달리는건 무의미해요..";
             pickSetting.Active();
             isError = true;
         }

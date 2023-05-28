@@ -110,7 +110,7 @@ public class PlayerStatus : MonoBehaviour
             }
         }
         // 19초가 경과한 경우 출발!
-        if (currentTime >= 1f)//19f
+        if (currentTime >= 19f)//19f
         {
             // 오브젝트를 앞으로 이동시키기
             Vector3 movement = transform.forward * moveSpeed * Time.deltaTime;

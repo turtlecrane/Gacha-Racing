@@ -11,6 +11,7 @@ TagManager:
   - FinishLine
   - ObstacleLine
   - Obstacle
+  - DontDestroy
   layers:
   - Default
   - TransparentFX

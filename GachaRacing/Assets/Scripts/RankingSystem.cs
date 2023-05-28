@@ -53,9 +53,10 @@ public class RankingSystem : MonoBehaviour
         FinishCount = 0;
         // 경과 시간 업데이트
         float currentTime = gameDataScript.RacingTime;
-        if (currentTime >= 20f)
+        if (currentTime >= 19f)
         {
             racingStart = true;
+            gameDataScript.isStart = true;
         }
         
         players = FindObjectsOfType<PlayerStatus>();
@@ -123,7 +124,7 @@ public class RankingSystem : MonoBehaviour
                     StartCoroutine(DelayedFunction(2.5f, FastEventComent));//2초뒤에 이벤트효과 꺼짐
                     FastFlag = true;
                 }
-                if (FastTime >= 10f)//카메라 시점 지속시간
+                if (FastTime >= 9f)//카메라 시점 지속시간
                 {
                     FastEventTime = false;
                 }
@@ -143,7 +144,7 @@ public class RankingSystem : MonoBehaviour
                 {
                     ObstacleCollision = false;
                 }
-                if (ObstacleTime >= 12f)//카메라 시점 지속시간
+                if (ObstacleTime >= 11f)//카메라 시점 지속시간
                 {
                     ObstacleCameraTime = false;
                 }
@@ -179,8 +180,9 @@ public class RankingSystem : MonoBehaviour
         if (FinishCount == gameDataScript.pickPeople)
         {
             OpenResult = true;
-            //Time.timeScale = 0f;//화면 정지
-            //Result.SetActive(true);
+            gameDataScript.isEnd = true;
+            Time.timeScale = 0f;//화면 정지
+            Result.SetActive(true);
             topPlayers = new PlayerStatus[gameDataScript.pickPeople];
             for (int i = 0; i < gameDataScript.pickPeople; i++)
             {

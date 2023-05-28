@@ -19,6 +19,8 @@ public class GameData : MonoBehaviour
     public List<string> selectedCharacters;
     
     public float RacingTime;
+    public bool isStart;
+    public bool isEnd;
 
     private void Update()
     {
