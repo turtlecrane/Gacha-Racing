@@ -26,7 +26,7 @@ public class RankingSystem : MonoBehaviour
     public GameObject FastEventComent;
     private bool FastFlag = false;
     public bool FastEventTime;
-    private float FastTime;
+    public float FastTime;
 
     public GameObject ObstacleEventComent;
     public bool ObstacleCollision;
@@ -48,12 +48,13 @@ public class RankingSystem : MonoBehaviour
         UltiTime = 0f;
     }
 
-    void Update()
+    //Update()
+    void FixedUpdate()
     {
         FinishCount = 0;
         // 경과 시간 업데이트
         float currentTime = gameDataScript.RacingTime;
-        if (currentTime >= 19f)
+        if (currentTime >= 19f)//19초 후에 출발!
         {
             racingStart = true;
             gameDataScript.isStart = true;
@@ -107,46 +108,10 @@ public class RankingSystem : MonoBehaviour
                     StartCoroutine(DelayedFunction(2.5f, UltiEventComent));//2초뒤에 이벤트효과 꺼짐
                     UltiFlag = true;
                 }
-                if (UltiTime >= 6.0f && UltimateTime)//궁극기 시간이 끝나면
+                if (UltiTime >= 6f && UltimateTime)//궁극기 시간이 끝나면
                 {
                     UltimateTime = false;//궁극기가 끝났다고 알림
                     //UltiTime = 0f;
-                }
-            }
-            if (players[i].isFastTime)
-            {
-                FastTime += Time.deltaTime;
-                FastEventTime = true;
-                //Debug.Log("순풍 이벤트 발동!!!!!");
-                if (!FastFlag)
-                {
-                    GameObjSetActive(FastEventComent);
-                    StartCoroutine(DelayedFunction(2.5f, FastEventComent));//2초뒤에 이벤트효과 꺼짐
-                    FastFlag = true;
-                }
-                if (FastTime >= 9f)//카메라 시점 지속시간
-                {
-                    FastEventTime = false;
-                }
-            }
-            if (players[i].isObstacleLine)
-            {
-                ObstacleTime += Time.deltaTime;
-                ObstacleCameraTime = true;
-                ObstacleCollision = true;
-                if (!ObstacleFlag)
-                {
-                    GameObjSetActive(ObstacleEventComent);
-                    StartCoroutine(DelayedFunction(2.5f, ObstacleEventComent));//2초뒤에 이벤트효과 꺼짐
-                    ObstacleFlag = true;
-                }
-                else 
-                {
-                    ObstacleCollision = false;
-                }
-                if (ObstacleTime >= 11f)//카메라 시점 지속시간
-                {
-                    ObstacleCameraTime = false;
                 }
             }
             if (players[i].isEndLine)
@@ -156,6 +121,41 @@ public class RankingSystem : MonoBehaviour
             if (players[i].isFinished)//결승점에 몇명이 들어왔는지 체킹
             {
                 FinishCount++; 
+            }
+        }
+        if (players[0].isFastTime)//1등이 순풍이벤트라인에 충돌하면 순풍이벤트 시작
+        {
+            FastTime += Time.deltaTime;
+            FastEventTime = true;
+            if (!FastFlag)
+            {
+                GameObjSetActive(FastEventComent);
+                StartCoroutine(DelayedFunction(2.5f, FastEventComent));//2초뒤에 이벤트효과 꺼짐
+                FastFlag = true;
+            }
+            if (FastTime >= 4.5f)//카메라 시점 지속시간
+            {
+                FastEventTime = false;
+            }
+        }
+        if (players[0].isObstacleLine)//1등이 장애물 이벤트 라인에 충돌되면 장애물 이벤트 시작
+        {
+            ObstacleTime += Time.deltaTime;
+            ObstacleCameraTime = true;
+            ObstacleCollision = true;
+            if (!ObstacleFlag)
+            {
+                GameObjSetActive(ObstacleEventComent);
+                StartCoroutine(DelayedFunction(2.5f, ObstacleEventComent));//2초뒤에 이벤트효과 꺼짐
+                ObstacleFlag = true;
+            }
+            else 
+            {
+                ObstacleCollision = false;
+            }
+            if (ObstacleTime >= 6f)//카메라 시점 지속시간
+            {
+                ObstacleCameraTime = false;
             }
         }
 

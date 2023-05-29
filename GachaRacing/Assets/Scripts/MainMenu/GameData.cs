@@ -21,12 +21,12 @@ public class GameData : MonoBehaviour
     public float RacingTime;
     public bool isStart;
     public bool isEnd;
-
-    private void Update()
+    
+    private void FixedUpdate()
     {
         RacingTime += Time.deltaTime;
     }
-    
+
     public float GetTime()
     {
         return RacingTime;

@@ -63,7 +63,7 @@ public class PlayerStatus : MonoBehaviour
             //Debug.Log(gameObject.name+" !! 궁극기 발동중~~");
             UltiEffect.SetActive(true);//필살기 이펙트
             moveSpeed = 14f;//필살기 속도 고정
-            if (UltiTime > 6f)//필살기는 6초동안 지속됨
+            if (UltiTime >= 6.1f)//필살기는 6초동안 지속됨
             {
                 isUltiTime = false;
                 UltiTime = 0f;
