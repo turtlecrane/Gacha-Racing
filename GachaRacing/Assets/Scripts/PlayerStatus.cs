@@ -26,7 +26,7 @@ public class PlayerStatus : MonoBehaviour
     public bool isObstacleLine;
     public bool isObstacle;
     private float ObstacleTime;
-    
+
     public bool isEndLine;
     public bool isFinished;
     
@@ -49,7 +49,7 @@ public class PlayerStatus : MonoBehaviour
         // 경과 시간 업데이트
         currentTime = gameDataScript.RacingTime;
     
-        if (!isUltiTime && !isFastTime && !isObstacle)
+        if (!isUltiTime && !isFastTime && !isObstacle && !isFinished)
         {
             // 일정 간격으로 속도 변경
             if (currentTime >= nextSpeedChangeTime)
@@ -99,7 +99,7 @@ public class PlayerStatus : MonoBehaviour
                 moveSpeed -= ObstacleSpeedCorrection;//기본속도에 장애물 속도 감소값을 뺀다.
                 ObstacleFlag = true;
             }
-            if (ObstacleTime > 2f)//장애물로 인한 속도 감속은 3초동안 지속됨
+            if (ObstacleTime > 1.5f)//장애물로 인한 속도 감속은 3초동안 지속됨
             {
                 isObstacle = false;
                 ObstacleTime = 0f;
@@ -115,6 +115,11 @@ public class PlayerStatus : MonoBehaviour
             // 오브젝트를 앞으로 이동시키기
             Vector3 movement = transform.forward * moveSpeed * Time.deltaTime;
             rb.MovePosition(rb.position + movement);
+        }
+
+        if (isFinished)//결승전에 들어갔으면 브레이크
+        {
+            moveSpeed = 1;
         }
     }
     

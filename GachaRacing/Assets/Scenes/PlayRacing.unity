@@ -8907,16 +8907,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9a037ddb4d4da458ef3a8085984cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalPeople: 1
-  pickPeople: 1
-  rilla: 0
-  tung: 0
-  sakana: 0
-  boool: 0
-  hunter: 0
-  bbick: 0
+  totalPeople: 8
+  pickPeople: 8
+  rilla: 1
+  tung: 1
+  sakana: 1
+  boool: 1
+  hunter: 1
+  bbick: 1
   horullus: 1
-  snicki: 0
+  snicki: 1
   selectedCharacters: []
   RacingTime: 0
   isStart: 0
